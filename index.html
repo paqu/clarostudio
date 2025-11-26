@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>claro studio | Architektura i Wnętrza</title>
+    <meta name="description" content="Autorska pracownia projektowa. Architekt z uprawnieniami. Projekty domów, wnętrz i budynków usługowych.">
+    <style>
+        /* --- RESET I BAZA --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- TYPOGRAFIA --- */
+        h1, h2, h3 { font-weight: 300; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+        p { margin-bottom: 1.5rem; color: #666; font-weight: 300; }
+
+        /* --- NAGŁÓWEK (HEADER) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        .logo { font-size: 1.3rem; font-weight: 700; letter-spacing: 2px; color: #000; }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+        nav a:hover { color: #888; }
+        
+        /* Przycisk CTA w menu */
+        .btn-contact {
+            border: 1px solid #000;
+            padding: 0.5rem 1.2rem;
+        }
+        .btn-contact:hover { background: #000; color: #fff; }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #000;
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 6rem 1.5rem 3rem;
+        }
+        .hero h1 { font-size: clamp(2rem, 7vw, 3.5rem); margin-bottom: 1rem; color: #000; line-height: 1.2; }
+        .hero p { font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; margin-bottom: 2rem; }
+        .btn-hero {
+            background: #000;
+            color: #fff;
+            padding: 0.9rem 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+        .btn-hero:hover { background: #333; }
+
+        /* --- SEKCJE OGÓLNE --- */
+        section { padding: 4rem 5%; }
+        
+        /* --- O NAS --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-text .license {
+            font-size: 0.85rem;
+            color: #000;
+            font-weight: 600;
+            border-left: 3px solid #000;
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+            line-height: 1.8;
+        }
+        .about-img {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(45deg, #c9c9c9 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- USŁUGI --- */
+        .services { background-color: #fafafa; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .service-card {
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .service-card h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-item {
+            position: relative;
+            height: 300px;
+            background-color: #ccc;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.8rem;
+        }
+        /* Overlay na projekcie */
+        .project-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.4s;
+        }
+        .project-item:hover .project-overlay { opacity: 1; }
+        
+        /* --- KONTAKT --- */
+        .contact { background-color: #1a1a1a; color: #fff; text-align: center; }
+        .contact h2 { color: #fff; border-bottom: 1px solid #444; display: inline-block; padding-bottom: 10px; }
+        .contact p { color: #aaa; }
+        .contact-info { margin-top: 2rem; font-size: 1.2rem; }
+        .contact-info a { border-bottom: 1px solid #444; }
+
+        /* --- STOPKA --- */
+        footer {
+            background: #000;
+            color: #555;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* --- RWD (MOBILE) --- */
+        @media (max-width: 768px) {
+            header { padding: 1rem 4%; }
+            .logo { font-size: 1.1rem; letter-spacing: 2px; }
+            
+            /* Hamburger menu */
+            .hamburger { display: flex; }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: #fff;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                transition: 0.3s;
+                padding: 5rem 2rem;
+            }
+            nav.active { right: 0; }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+            nav a { font-size: 1rem; }
+            .btn-contact {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            /* Sections */
+            section { padding: 3rem 4%; }
+            h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+            
+            .hero {
+                min-height: 90vh;
+                padding: 5rem 1.5rem 2rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-img { height: 250px; }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .service-card { padding: 1.5rem; }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .project-item { height: 250px; }
+            
+            .contact-info { font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            section { padding: 2.5rem 4%; }
+            h2 { font-size: 1.4rem; }
+            
+            .hero {
+                padding: 4rem 1rem 2rem;
+            }
+            .hero p { font-size: 0.95rem; }
+            .btn-hero { padding: 0.8rem 1.5rem; font-size: 0.8rem; }
+            
+            .about-img { height: 200px; }
+            .about-text .license { font-size: 0.8rem; }
+            
+            .project-item { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">claro studio</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">O nas</a></li>
+                <li><a href="#services">Usługi</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact" class="btn-contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Architektura z Wizją</h1>
+        <p>Projektujemy przestrzeń, która inspiruje do życia i pracy. Funkcjonalność, estetyka, dialog.</p>
+        <a href="#portfolio" class="btn-hero">Zobacz Realizacje</a>
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>O Pracowni</h2>
+                <p>W claro studio wierzymy, że dobra architektura to idealna równowaga między estetyką, funkcjonalnością a zrównoważonym wykorzystaniem zasobów. Każdy projekt traktujemy jak unikalne wyzwanie, stawiając na innowacyjne rozwiązania i dialog z inwestorem.</p>
+                <div class="license">
+                    Architekt Imię Nazwisko<br>
+                    Uprawnienia budowlane nr: XXX/XXXX/XX<br>
+                    Członek Izby Architektów RP
+                </div>
+            </div>
+            <div class="about-img">
+                [Zdjęcie Studio]
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Zakres Usług</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Projekty Budowlane</h3>
+                <p>Domy jednorodzinne, bliźniaki, budynki wielorodzinne oraz obiekty usługowe.</p>
+            </div>
+            <div class="service-card">
+                <h3>Projekty Wnętrz</h3>
+                <p>Kompleksowe aranżacje wnętrz prywatnych i komercyjnych z doborem materiałów.</p>
+            </div>
+            <div class="service-card">
+                <h3>Formalności</h3>
+                <p>Prowadzenie procesu od koncepcji, przez pozwolenie na budowę, aż po odbiory.</p>
+            </div>
+            <div class="service-card">
+                <h3>Nadzór Autorski</h3>
+                <p>Wizyty na budowie i dbanie o zgodność realizacji z projektem.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Wybrane Projekty</h2>
+        <div class="portfolio-grid">
+            <div class="project-item" style="background-color: #ddd;">
+                [Portfolio Image]
+                <div class="project-overlay">
+                    <h3>Dom w Lesie</h3>
+                    <p>Projekt Indywidualny</p>
+                </div>
+            </div>
+            <div class="project-item" style="background-color: #ccc;">
+                [Portfolio Image]
+                <div class="project-overlay">
+                    <h3>Apartament Centrum</h3>
+                    <p>Wnętrze</p>
+                </div>
+            </div>
+            <div class="project-item" style="background-color: #bbb;">
+                [Portfolio Image]
+                <div class="project-overlay">
+                    <h3>Biurowiec Glass</h3>
+                    <p>Obiekt Komercyjny</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Skontaktuj się</h2>
+        <p>Porozmawiajmy o Twoim projekcie.</p>
+        
+        <div class="contact-info">
+            <p><strong>claro studio</strong></p>
+            <p>ul. Przykładowa 12/3, 00-000 Warszawa</p>
+            <br>
+            <p>Tel: <a href="tel:+48000000000">+48 000 000 000</a></p>
+            <p>Email: <a href="/cdn-cgi/l/email-protection#244f4b4a50454f5064474845564b575051404d4b0a5448"><span class="__cf_email__" data-cfemail="385357564c59534c785b54594a574b4c4d5c5157164854">[email&#160;protected]</span></a></p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 claro studio. Wszelkie prawa zastrzeżone.
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
