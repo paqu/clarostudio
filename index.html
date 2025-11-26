@@ -1,407 +1,1337 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>claro studio | Architektura i Wnętrza</title>
-    <meta name="description" content="Autorska pracownia projektowa. Architekt z uprawnieniami. Projekty domów, wnętrz i budynków usługowych.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      claro studio | Architektura i Wnętrza - Projekty Budowlane Warszawa
+    </title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Autorska pracownia projektowa claro studio. Architekt z uprawnieniami. Projekty domów, wnętrz i budynków usługowych w Warszawie i całej Polsce."
+    />
+    <meta
+      name="keywords"
+      content="architekt warszawa, projekty domów, projekt wnętrz, architektura, budownictwo, projekt budowlany"
+    />
+    <meta name="author" content="claro studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://clarostudio.pl" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://clarostudio.pl" />
+    <meta property="og:title" content="claro studio | Architektura i Wnętrza" />
+    <meta
+      property="og:description"
+      content="Projektujemy przestrzeń, która inspiruje do życia i pracy. Funkcjonalność, estetyka, dialog."
+    />
+    <meta property="og:image" content="https://clarostudio.pl/og-image.jpg" />
+    <meta property="og:locale" content="pl_PL" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://clarostudio.pl" />
+    <meta
+      name="twitter:title"
+      content="claro studio | Architektura i Wnętrza"
+    />
+    <meta
+      name="twitter:description"
+      content="Projektujemy przestrzeń, która inspiruje do życia i pracy. Funkcjonalność, estetyka, dialog."
+    />
+    <meta
+      name="twitter:image"
+      content="https://clarostudio.pl/twitter-image.jpg"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ArchitecturalService",
+        "name": "claro studio",
+        "description": "Autorska pracownia projektowa. Projekty domów, wnętrz i budynków usługowych.",
+        "url": "https://clarostudio.pl",
+        "telephone": "+48000000000",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Przykładowa 12/3",
+          "addressLocality": "Warszawa",
+          "postalCode": "00-000",
+          "addressCountry": "PL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "52.2297",
+          "longitude": "21.0122"
+        },
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "priceRange": "$$"
+      }
+    </script>
+
     <style>
-        /* --- RESET I BAZA --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-            scroll-behavior: smooth;
-        }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+      /* --- RESET I BAZA --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
 
-        /* --- TYPOGRAFIA --- */
-        h1, h2, h3 { font-weight: 300; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-        p { margin-bottom: 1.5rem; color: #666; font-weight: 300; }
+      /* --- TYPOGRAFIA --- */
+      h1,
+      h2,
+      h3 {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      p {
+        margin-bottom: 1.5rem;
+        color: #666;
+        font-weight: 300;
+      }
 
-        /* --- NAGŁÓWEK (HEADER) --- */
+      /* --- SCROLL ANIMATIONS --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal-left.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal-right.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* --- NAGŁÓWEK (HEADER) --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        position: fixed;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        z-index: 1000;
+        border-bottom: 1px solid #eee;
+      }
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #000;
+      }
+      nav ul {
+        display: flex;
+        gap: 2rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      nav a:hover {
+        color: #888;
+      }
+
+      /* Przycisk CTA w menu */
+      .btn-contact {
+        border: 1px solid #000;
+        padding: 0.5rem 1.2rem;
+      }
+      .btn-contact:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* Hamburger menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .hamburger span {
+        width: 25px;
+        height: 2px;
+        background: #000;
+        transition: 0.3s;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        padding: 6rem 1.5rem 3rem;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 7vw, 3.5rem);
+        margin-bottom: 1rem;
+        color: #000;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+      .btn-hero {
+        background: #000;
+        color: #fff;
+        padding: 0.9rem 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+        display: inline-block;
+      }
+      .btn-hero:hover {
+        background: #333;
+      }
+
+      /* --- SEKCJE OGÓLNE --- */
+      section {
+        padding: 4rem 5%;
+      }
+
+      /* --- O NAS --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      .about-text .license {
+        font-size: 0.85rem;
+        color: #000;
+        font-weight: 600;
+        border-left: 3px solid #000;
+        padding-left: 1rem;
+        margin-top: 1.5rem;
+        line-height: 1.8;
+      }
+      .about-img {
+        width: 100%;
+        height: 350px;
+        background: linear-gradient(45deg, #c9c9c9 0%, #e0e0e0 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* --- USŁUGI --- */
+      .services {
+        background-color: #fafafa;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        text-align: center;
+      }
+      .service-card {
+        background: #fff;
+        padding: 2rem;
+        border: 1px solid #eee;
+        transition: 0.3s;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      }
+      .service-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      /* --- PORTFOLIO --- */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .project-item {
+        position: relative;
+        height: 300px;
+        background-color: #ccc;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      /* Lazy loading placeholder */
+      .project-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .project-item img.loaded {
+        opacity: 1;
+      }
+
+      /* Overlay na projekcie */
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.4s;
+      }
+      .project-item:hover .project-overlay {
+        opacity: 1;
+      }
+
+      /* --- LIGHTBOX --- */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        text-align: center;
+      }
+      .lightbox-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .lightbox-title {
+        color: #fff;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+      }
+      .lightbox-description {
+        color: #aaa;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 3rem;
+        color: #fff;
+        cursor: pointer;
+        line-height: 1;
+        transition: 0.3s;
+        z-index: 2001;
+      }
+      .lightbox-close:hover {
+        color: #888;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 3rem;
+        color: #fff;
+        cursor: pointer;
+        padding: 1rem;
+        transition: 0.3s;
+        user-select: none;
+      }
+      .lightbox-nav:hover {
+        color: #888;
+      }
+      .lightbox-prev {
+        left: 20px;
+      }
+      .lightbox-next {
+        right: 20px;
+      }
+
+      /* --- KONTAKT --- */
+      .contact {
+        background-color: #1a1a1a;
+        color: #fff;
+      }
+      .contact h2 {
+        color: #fff;
+        border-bottom: 1px solid #444;
+        display: inline-block;
+        padding-bottom: 10px;
+      }
+      .contact p {
+        color: #aaa;
+        text-align: center;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Contact Info */
+      .contact-info-box {
+        background: #222;
+        padding: 2rem;
+        border-radius: 4px;
+      }
+      .contact-info-box h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+      }
+      .contact-info-box p {
+        color: #aaa;
+        margin-bottom: 1rem;
+        text-align: left;
+      }
+      .contact-info-box a {
+        color: #fff;
+        border-bottom: 1px solid #444;
+      }
+      .contact-info-box a:hover {
+        border-color: #fff;
+      }
+
+      /* Google Maps */
+      .map-container {
+        width: 100%;
+        height: 300px;
+        margin-top: 2rem;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        filter: grayscale(100%) invert(92%) contrast(83%);
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background: #222;
+        padding: 2rem;
+        border-radius: 4px;
+      }
+      .contact-form h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #aaa;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #fff;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: 0.3s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #666;
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+      .form-group.checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .form-group.checkbox input[type="checkbox"] {
+        width: auto;
+        margin-top: 0.2rem;
+      }
+      .form-group.checkbox label {
+        margin: 0;
+        text-transform: none;
+        letter-spacing: normal;
+        font-size: 0.85rem;
+      }
+      .form-error {
+        color: #ff6b6b;
+        font-size: 0.8rem;
+        margin-top: 0.3rem;
+        display: none;
+      }
+      .form-group.error input,
+      .form-group.error textarea,
+      .form-group.error select {
+        border-color: #ff6b6b;
+      }
+      .form-group.error .form-error {
+        display: block;
+      }
+      .btn-submit {
+        width: 100%;
+        padding: 1rem;
+        background: #fff;
+        color: #000;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-submit:hover {
+        background: #ddd;
+      }
+      .btn-submit:disabled {
+        background: #444;
+        color: #666;
+        cursor: not-allowed;
+      }
+      .form-message {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 4px;
+        display: none;
+        text-align: center;
+      }
+      .form-message.success {
+        background: #2ecc71;
+        color: #fff;
+        display: block;
+      }
+      .form-message.error {
+        background: #ff6b6b;
+        color: #fff;
+        display: block;
+      }
+
+      /* --- STOPKA --- */
+      footer {
+        background: #000;
+        color: #555;
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      /* --- RWD (MOBILE) --- */
+      @media (max-width: 768px) {
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            z-index: 1000;
-            border-bottom: 1px solid #eee;
+          padding: 1rem 4%;
         }
-        .logo { font-size: 1.3rem; font-weight: 700; letter-spacing: 2px; color: #000; }
-        nav ul { display: flex; gap: 2rem; }
-        nav a { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
-        nav a:hover { color: #888; }
-        
-        /* Przycisk CTA w menu */
-        .btn-contact {
-            border: 1px solid #000;
-            padding: 0.5rem 1.2rem;
+        .logo {
+          font-size: 1.1rem;
+          letter-spacing: 2px;
         }
-        .btn-contact:hover { background: #000; color: #fff; }
 
         /* Hamburger menu */
         .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 1001;
+          display: flex;
         }
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: #000;
-            transition: 0.3s;
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
 
-        /* --- HERO SECTION --- */
+        nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          max-width: 300px;
+          height: 100vh;
+          background: #fff;
+          box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+          transition: 0.3s;
+          padding: 5rem 2rem;
+        }
+        nav.active {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+        nav a {
+          font-size: 1rem;
+        }
+        .btn-contact {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+        }
+
+        /* Sections */
+        section {
+          padding: 3rem 4%;
+        }
+        h2 {
+          font-size: 1.6rem;
+          margin-bottom: 1.5rem;
+        }
+
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
-            padding: 6rem 1.5rem 3rem;
+          min-height: 90vh;
+          padding: 5rem 1.5rem 2rem;
         }
-        .hero h1 { font-size: clamp(2rem, 7vw, 3.5rem); margin-bottom: 1rem; color: #000; line-height: 1.2; }
-        .hero p { font-size: clamp(1rem, 3vw, 1.2rem); max-width: 600px; margin-bottom: 2rem; }
-        .btn-hero {
-            background: #000;
-            color: #fff;
-            padding: 0.9rem 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            display: inline-block;
-        }
-        .btn-hero:hover { background: #333; }
 
-        /* --- SEKCJE OGÓLNE --- */
-        section { padding: 4rem 5%; }
-        
-        /* --- O NAS --- */
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .about-text .license {
-            font-size: 0.85rem;
-            color: #000;
-            font-weight: 600;
-            border-left: 3px solid #000;
-            padding-left: 1rem;
-            margin-top: 1.5rem;
-            line-height: 1.8;
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
         .about-img {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(45deg, #c9c9c9 0%, #e0e0e0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+          height: 250px;
         }
 
-        /* --- USŁUGI --- */
-        .services { background-color: #fafafa; }
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
         .service-card {
-            background: #fff;
-            padding: 2rem;
-            border: 1px solid #eee;
-            transition: 0.3s;
+          padding: 1.5rem;
         }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .service-card h3 { font-size: 1.1rem; margin-bottom: 1rem; }
 
-        /* --- PORTFOLIO --- */
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
         .project-item {
-            position: relative;
-            height: 300px;
-            background-color: #ccc;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.8rem;
-        }
-        /* Overlay na projekcie */
-        .project-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: 0.4s;
-        }
-        .project-item:hover .project-overlay { opacity: 1; }
-        
-        /* --- KONTAKT --- */
-        .contact { background-color: #1a1a1a; color: #fff; text-align: center; }
-        .contact h2 { color: #fff; border-bottom: 1px solid #444; display: inline-block; padding-bottom: 10px; }
-        .contact p { color: #aaa; }
-        .contact-info { margin-top: 2rem; font-size: 1.2rem; }
-        .contact-info a { border-bottom: 1px solid #444; }
-
-        /* --- STOPKA --- */
-        footer {
-            background: #000;
-            color: #555;
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.8rem;
+          height: 250px;
         }
 
-        /* --- RWD (MOBILE) --- */
-        @media (max-width: 768px) {
-            header { padding: 1rem 4%; }
-            .logo { font-size: 1.1rem; letter-spacing: 2px; }
-            
-            /* Hamburger menu */
-            .hamburger { display: flex; }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                max-width: 300px;
-                height: 100vh;
-                background: #fff;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-                transition: 0.3s;
-                padding: 5rem 2rem;
-            }
-            nav.active { right: 0; }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
-            }
-            nav a { font-size: 1rem; }
-            .btn-contact {
-                display: inline-block;
-                width: 100%;
-                text-align: center;
-            }
-            
-            /* Sections */
-            section { padding: 3rem 4%; }
-            h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
-            
-            .hero {
-                min-height: 90vh;
-                padding: 5rem 1.5rem 2rem;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .about-img { height: 250px; }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .service-card { padding: 1.5rem; }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .project-item { height: 250px; }
-            
-            .contact-info { font-size: 1rem; }
+        /* Contact */
+        .contact-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
-        @media (max-width: 480px) {
-            section { padding: 2.5rem 4%; }
-            h2 { font-size: 1.4rem; }
-            
-            .hero {
-                padding: 4rem 1rem 2rem;
-            }
-            .hero p { font-size: 0.95rem; }
-            .btn-hero { padding: 0.8rem 1.5rem; font-size: 0.8rem; }
-            
-            .about-img { height: 200px; }
-            .about-text .license { font-size: 0.8rem; }
-            
-            .project-item { height: 220px; }
+        /* Lightbox */
+        .lightbox-close {
+          font-size: 2rem;
+          top: 10px;
+          right: 15px;
         }
+        .lightbox-nav {
+          font-size: 2rem;
+          padding: 0.5rem;
+        }
+        .lightbox-prev {
+          left: 10px;
+        }
+        .lightbox-next {
+          right: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        section {
+          padding: 2.5rem 4%;
+        }
+        h2 {
+          font-size: 1.4rem;
+        }
+
+        .hero {
+          padding: 4rem 1rem 2rem;
+        }
+        .hero p {
+          font-size: 0.95rem;
+        }
+        .btn-hero {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.8rem;
+        }
+
+        .about-img {
+          height: 200px;
+        }
+        .about-text .license {
+          font-size: 0.8rem;
+        }
+
+        .project-item {
+          height: 220px;
+        }
+
+        .contact-form,
+        .contact-info-box {
+          padding: 1.5rem;
+        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <div class="logo">claro studio</div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about">O nas</a></li>
-                <li><a href="#services">Usługi</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact" class="btn-contact">Kontakt</a></li>
-            </ul>
-        </nav>
+      <div class="logo">claro studio</div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">O nas</a></li>
+          <li><a href="#services">Usługi</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact" class="btn-contact">Kontakt</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section class="hero">
-        <h1>Architektura z Wizją</h1>
-        <p>Projektujemy przestrzeń, która inspiruje do życia i pracy. Funkcjonalność, estetyka, dialog.</p>
-        <a href="#portfolio" class="btn-hero">Zobacz Realizacje</a>
+      <h1 class="reveal">Architektura z Wizją</h1>
+      <p class="reveal">
+        Projektujemy przestrzeń, która inspiruje do życia i pracy.
+        Funkcjonalność, estetyka, dialog.
+      </p>
+      <a href="#portfolio" class="btn-hero reveal">Zobacz Realizacje</a>
     </section>
 
     <section id="about">
-        <div class="about-grid">
-            <div class="about-text">
-                <h2>O Pracowni</h2>
-                <p>W claro studio wierzymy, że dobra architektura to idealna równowaga między estetyką, funkcjonalnością a zrównoważonym wykorzystaniem zasobów. Każdy projekt traktujemy jak unikalne wyzwanie, stawiając na innowacyjne rozwiązania i dialog z inwestorem.</p>
-                <div class="license">
-                    Architekt Imię Nazwisko<br>
-                    Uprawnienia budowlane nr: XXX/XXXX/XX<br>
-                    Członek Izby Architektów RP
-                </div>
-            </div>
-            <div class="about-img">
-                [Zdjęcie Studio]
-            </div>
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <h2>O Pracowni</h2>
+          <p>
+            W claro studio wierzymy, że dobra architektura to idealna równowaga
+            między estetyką, funkcjonalnością a zrównoważonym wykorzystaniem
+            zasobów. Każdy projekt traktujemy jak unikalne wyzwanie, stawiając
+            na innowacyjne rozwiązania i dialog z inwestorem.
+          </p>
+          <div class="license">
+            Architekt Imię Nazwisko<br />
+            Uprawnienia budowlane nr: XXX/XXXX/XX<br />
+            Członek Izby Architektów RP
+          </div>
         </div>
+        <div class="about-img reveal-right">[Zdjęcie Studio]</div>
+      </div>
     </section>
 
     <section id="services" class="services">
-        <h2>Zakres Usług</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Projekty Budowlane</h3>
-                <p>Domy jednorodzinne, bliźniaki, budynki wielorodzinne oraz obiekty usługowe.</p>
-            </div>
-            <div class="service-card">
-                <h3>Projekty Wnętrz</h3>
-                <p>Kompleksowe aranżacje wnętrz prywatnych i komercyjnych z doborem materiałów.</p>
-            </div>
-            <div class="service-card">
-                <h3>Formalności</h3>
-                <p>Prowadzenie procesu od koncepcji, przez pozwolenie na budowę, aż po odbiory.</p>
-            </div>
-            <div class="service-card">
-                <h3>Nadzór Autorski</h3>
-                <p>Wizyty na budowie i dbanie o zgodność realizacji z projektem.</p>
-            </div>
+      <h2 class="reveal">Zakres Usług</h2>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Projekty Budowlane</h3>
+          <p>
+            Domy jednorodzinne, bliźniaki, budynki wielorodzinne oraz obiekty
+            usługowe.
+          </p>
         </div>
+        <div class="service-card reveal">
+          <h3>Projekty Wnętrz</h3>
+          <p>
+            Kompleksowe aranżacje wnętrz prywatnych i komercyjnych z doborem
+            materiałów.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Formalności</h3>
+          <p>
+            Prowadzenie procesu od koncepcji, przez pozwolenie na budowę, aż po
+            odbiory.
+          </p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Nadzór Autorski</h3>
+          <p>Wizyty na budowie i dbanie o zgodność realizacji z projektem.</p>
+        </div>
+      </div>
     </section>
 
     <section id="portfolio">
-        <h2>Wybrane Projekty</h2>
-        <div class="portfolio-grid">
-            <div class="project-item" style="background-color: #ddd;">
-                [Portfolio Image]
-                <div class="project-overlay">
-                    <h3>Dom w Lesie</h3>
-                    <p>Projekt Indywidualny</p>
-                </div>
-            </div>
-            <div class="project-item" style="background-color: #ccc;">
-                [Portfolio Image]
-                <div class="project-overlay">
-                    <h3>Apartament Centrum</h3>
-                    <p>Wnętrze</p>
-                </div>
-            </div>
-            <div class="project-item" style="background-color: #bbb;">
-                [Portfolio Image]
-                <div class="project-overlay">
-                    <h3>Biurowiec Glass</h3>
-                    <p>Obiekt Komercyjny</p>
-                </div>
-            </div>
+      <h2 class="reveal">Wybrane Projekty</h2>
+      <div class="portfolio-grid">
+        <div
+          class="project-item reveal"
+          data-title="Dom w Lesie"
+          data-description="Projekt Indywidualny"
+          style="background-color: #ddd"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Dom w Lesie</h3>
+            <p>Projekt Indywidualny</p>
+          </div>
         </div>
+        <div
+          class="project-item reveal"
+          data-title="Apartament Centrum"
+          data-description="Wnętrze"
+          style="background-color: #ccc"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Apartament Centrum</h3>
+            <p>Wnętrze</p>
+          </div>
+        </div>
+        <div
+          class="project-item reveal"
+          data-title="Biurowiec Glass"
+          data-description="Obiekt Komercyjny"
+          style="background-color: #bbb"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Biurowiec Glass</h3>
+            <p>Obiekt Komercyjny</p>
+          </div>
+        </div>
+        <div
+          class="project-item reveal"
+          data-title="Willa Moderna"
+          data-description="Dom Jednorodzinny"
+          style="background-color: #aaa"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Willa Moderna</h3>
+            <p>Dom Jednorodzinny</p>
+          </div>
+        </div>
+        <div
+          class="project-item reveal"
+          data-title="Loft Industrialny"
+          data-description="Wnętrze Mieszkalne"
+          style="background-color: #999"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Loft Industrialny</h3>
+            <p>Wnętrze Mieszkalne</p>
+          </div>
+        </div>
+        <div
+          class="project-item reveal"
+          data-title="Restauracja Fusion"
+          data-description="Obiekt Gastronomiczny"
+          style="background-color: #888"
+        >
+          [Portfolio Image]
+          <div class="project-overlay">
+            <h3>Restauracja Fusion</h3>
+            <p>Obiekt Gastronomiczny</p>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <span class="lightbox-nav lightbox-prev">&#10094;</span>
+      <span class="lightbox-nav lightbox-next">&#10095;</span>
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="" />
+        <div class="lightbox-title" id="lightbox-title"></div>
+        <div class="lightbox-description" id="lightbox-description"></div>
+      </div>
+    </div>
+
     <section id="contact" class="contact">
-        <h2>Skontaktuj się</h2>
-        <p>Porozmawiajmy o Twoim projekcie.</p>
-        
-        <div class="contact-info">
+      <h2 class="reveal">Skontaktuj się</h2>
+      <p class="reveal">Porozmawiajmy o Twoim projekcie.</p>
+
+      <div class="contact-container">
+        <!-- Contact Info & Map -->
+        <div>
+          <div class="contact-info-box reveal-left">
+            <h3>Dane Kontaktowe</h3>
             <p><strong>claro studio</strong></p>
-            <p>ul. Przykładowa 12/3, 00-000 Warszawa</p>
-            <br>
+            <p>ul. Przykładowa 12/3<br />00-000 Warszawa</p>
+            <br />
             <p>Tel: <a href="tel:+48000000000">+48 000 000 000</a></p>
-            <p>Email: <a href="/cdn-cgi/l/email-protection#244f4b4a50454f5064474845564b575051404d4b0a5448"><span class="__cf_email__" data-cfemail="385357564c59534c785b54594a574b4c4d5c5157164854">[email&#160;protected]</span></a></p>
+            <p>
+              Email:
+              <a href="mailto:kontakt@clarostudio.pl">kontakt@clarostudio.pl</a>
+            </p>
+            <br />
+            <p><strong>Godziny pracy:</strong><br />Pn-Pt: 9:00 - 17:00</p>
+          </div>
+
+          <!-- Google Maps -->
+          <div class="map-container reveal-left">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.4649475415716!2d21.010419315788493!3d52.22968797976151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669a869f01%3A0x72f0be2a88ead3fc!2sPalace%20of%20Culture%20and%20Science!5e0!3m2!1sen!2spl!4v1234567890123!5m2!1sen!2spl"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
         </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form reveal-right">
+          <h3>Formularz Kontaktowy</h3>
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="name">Imię i Nazwisko *</label>
+              <input type="text" id="name" name="name" required />
+              <div class="form-error">Proszę podać imię i nazwisko</div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+              <div class="form-error">Proszę podać poprawny adres email</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="projectType">Typ Projektu *</label>
+              <select id="projectType" name="projectType" required>
+                <option value="">Wybierz...</option>
+                <option value="dom">Dom jednorodzinny</option>
+                <option value="wnetrze">Projekt wnętrza</option>
+                <option value="budynek">Budynek usługowy</option>
+                <option value="nadzor">Nadzór autorski</option>
+                <option value="inne">Inne</option>
+              </select>
+              <div class="form-error">Proszę wybrać typ projektu</div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Wiadomość *</label>
+              <textarea id="message" name="message" required></textarea>
+              <div class="form-error">Proszę wpisać wiadomość</div>
+            </div>
+
+            <div class="form-group checkbox">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <label for="privacy"
+                >Zgadzam się na przetwarzanie moich danych osobowych zgodnie z
+                RODO *</label
+              >
+              <div class="form-error">
+                Proszę zaakceptować politykę prywatności
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Wyślij Wiadomość</button>
+
+            <div class="form-message" id="formMessage"></div>
+          </form>
+        </div>
+      </div>
     </section>
 
     <footer>
-        &copy; 2024 claro studio. Wszelkie prawa zastrzeżone.
+      &copy; 2024 claro studio. Wszelkie prawa zastrzeżone. |
+      <a href="#" style="color: #777">Polityka Prywatności</a>
     </footer>
 
     <script>
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const navLinks = document.querySelectorAll('nav a');
+      // ===== HAMBURGER MENU =====
+      const hamburger = document.querySelector(".hamburger");
+      const nav = document.querySelector("nav");
+      const navLinks = document.querySelectorAll("nav a");
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+
+      // ===== SCROLL ANIMATIONS (INTERSECTION OBSERVER) =====
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all reveal elements
+      document
+        .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+        .forEach((el) => {
+          observer.observe(el);
         });
 
-        // Close menu when clicking on a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-            });
-        });
+      // ===== LIGHTBOX =====
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const lightboxTitle = document.getElementById("lightbox-title");
+      const lightboxDescription = document.getElementById(
+        "lightbox-description",
+      );
+      const lightboxClose = document.querySelector(".lightbox-close");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+      const projectItems = document.querySelectorAll(".project-item");
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
+      let currentProjectIndex = 0;
+
+      // Open lightbox
+      projectItems.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          currentProjectIndex = index;
+          showLightbox(item);
+        });
+      });
+
+      function showLightbox(item) {
+        const title = item.dataset.title || "";
+        const description = item.dataset.description || "";
+        const bgColor = item.style.backgroundColor;
+
+        // In real implementation, you would load actual images here
+        // For demo, we're using the background color
+        lightboxImg.style.backgroundColor = bgColor;
+        lightboxImg.style.width = "600px";
+        lightboxImg.style.height = "400px";
+        lightboxImg.alt = title;
+
+        lightboxTitle.textContent = title;
+        lightboxDescription.textContent = description;
+
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Close lightbox
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      lightboxClose.addEventListener("click", closeLightbox);
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Navigation
+      lightboxPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentProjectIndex =
+          (currentProjectIndex - 1 + projectItems.length) % projectItems.length;
+        showLightbox(projectItems[currentProjectIndex]);
+      });
+
+      lightboxNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentProjectIndex = (currentProjectIndex + 1) % projectItems.length;
+        showLightbox(projectItems[currentProjectIndex]);
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("active")) return;
+
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") lightboxPrev.click();
+        if (e.key === "ArrowRight") lightboxNext.click();
+      });
+
+      // ===== LAZY LOADING IMAGES =====
+      // This would be used for actual images in production
+      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.classList.add("loaded");
+              imageObserver.unobserve(img);
             }
+          });
         });
-    </script>
 
-</body>
+        lazyImages.forEach((img) => imageObserver.observe(img));
+      }
+
+      // ===== CONTACT FORM VALIDATION & SUBMISSION =====
+      const contactForm = document.getElementById("contactForm");
+      const formMessage = document.getElementById("formMessage");
+
+      // Email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Validate individual field
+      function validateField(field) {
+        const group = field.closest(".form-group");
+        let isValid = true;
+
+        // Remove previous error
+        group.classList.remove("error");
+
+        // Check if required
+        if (field.hasAttribute("required") && !field.value.trim()) {
+          isValid = false;
+        }
+
+        // Email validation
+        if (
+          field.type === "email" &&
+          field.value &&
+          !emailRegex.test(field.value)
+        ) {
+          isValid = false;
+        }
+
+        // Checkbox validation
+        if (
+          field.type === "checkbox" &&
+          field.hasAttribute("required") &&
+          !field.checked
+        ) {
+          isValid = false;
+        }
+
+        // Select validation
+        if (
+          field.tagName === "SELECT" &&
+          field.hasAttribute("required") &&
+          !field.value
+        ) {
+          isValid = false;
+        }
+
+        if (!isValid) {
+          group.classList.add("error");
+        }
+
+        return isValid;
+      }
+
+      // Real-time validation
+      contactForm
+        .querySelectorAll("input, textarea, select")
+        .forEach((field) => {
+          field.addEventListener("blur", () => validateField(field));
+          field.addEventListener("input", () => {
+            if (field.closest(".form-group").classList.contains("error")) {
+              validateField(field);
+            }
+          });
+        });
+
+      // Form submission
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Validate all fields
+        const fields = contactForm.querySelectorAll("input, textarea, select");
+        let isFormValid = true;
+
+        fields.forEach((field) => {
+          if (!validateField(field)) {
+            isFormValid = false;
+          }
+        });
+
+        if (!isFormValid) {
+          showFormMessage("Proszę poprawić błędy w formularzu.", "error");
+          return;
+        }
+
+        // Disable submit button
+        const submitBtn = contactForm.querySelector(".btn-submit");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Wysyłanie...";
+
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+
+        try {
+          // Simulate API call (replace with actual endpoint)
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+
+          // In production, send data to server:
+          // const response = await fetch('/api/contact', {
+          //     method: 'POST',
+          //     headers: { 'Content-Type': 'application/json' },
+          //     body: JSON.stringify(data)
+          // });
+
+          console.log("Form data:", data);
+
+          showFormMessage(
+            "Dziękujemy! Twoja wiadomość została wysłana. Skontaktujemy się wkrótce.",
+            "success",
+          );
+          contactForm.reset();
+        } catch (error) {
+          showFormMessage(
+            "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.",
+            "error",
+          );
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Wyślij Wiadomość";
+        }
+      });
+
+      function showFormMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+
+        setTimeout(() => {
+          formMessage.className = "form-message";
+        }, 5000);
+      }
+
+      // ===== SMOOTH SCROLL =====
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
