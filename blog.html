@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - claro studio | Architektura i Wnętrza</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Blog claro studio - artykuły o architekturze, projektowaniu wnętrz, trendach w budownictwie i procesie budowy domu."
+    />
+    <meta
+      name="keywords"
+      content="blog architektoniczny, trendy w architekturze, porady budowlane, projektowanie wnętrz"
+    />
+    <meta name="author" content="claro studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://clarostudio.pl/blog" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://clarostudio.pl/blog" />
+    <meta property="og:title" content="Blog - claro studio" />
+    <meta
+      property="og:description"
+      content="Najnowsze artykuły o architekturze i projektowaniu."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <style>
+      /* --- RESET I BAZA --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        background-color: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* --- TYPOGRAFIA --- */
+      h1,
+      h2,
+      h3 {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      p {
+        margin-bottom: 1.5rem;
+        color: #666;
+        font-weight: 300;
+      }
+
+      /* --- SCROLL ANIMATIONS --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- NAGŁÓWEK (HEADER) --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        position: fixed;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        z-index: 1000;
+        border-bottom: 1px solid #eee;
+      }
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #000;
+      }
+      nav ul {
+        display: flex;
+        gap: 2rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      nav a:hover {
+        color: #888;
+      }
+
+      /* Przycisk CTA w menu */
+      .btn-contact {
+        border: 1px solid #000;
+        padding: 0.5rem 1.2rem;
+      }
+      .btn-contact:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* Hamburger menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .hamburger span {
+        width: 25px;
+        height: 2px;
+        background: #000;
+        transition: 0.3s;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      /* --- PAGE HEADER --- */
+      .page-header {
+        padding: 8rem 5% 4rem;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        text-align: center;
+      }
+      .page-header h1 {
+        margin-bottom: 1rem;
+      }
+      .page-header p {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* --- BLOG GRID --- */
+      .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 5%;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .blog-card {
+        background: #fff;
+        border: 1px solid #eee;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+      .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .blog-card-image {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.8rem;
+        overflow: hidden;
+      }
+
+      .blog-card-content {
+        padding: 2rem;
+      }
+
+      .blog-card-category {
+        display: inline-block;
+        font-size: 0.7rem;
+        color: #fff;
+        background: #000;
+        padding: 0.3rem 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+      }
+
+      .blog-card-date {
+        font-size: 0.75rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      .blog-card-title {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: #000;
+        letter-spacing: 1px;
+        line-height: 1.4;
+      }
+
+      .blog-card-excerpt {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .blog-card-link {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #000;
+        border-bottom: 2px solid #000;
+        padding-bottom: 2px;
+      }
+      .blog-card-link:hover {
+        color: #666;
+        border-color: #666;
+      }
+
+      /* --- CATEGORIES FILTER --- */
+      .categories-filter {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .category-btn {
+        padding: 0.6rem 1.2rem;
+        background: #fff;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        transition: 0.3s;
+      }
+
+      .category-btn:hover,
+      .category-btn.active {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+      }
+
+      /* --- STOPKA --- */
+      footer {
+        background: #000;
+        color: #555;
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      /* --- RWD (MOBILE) --- */
+      @media (max-width: 768px) {
+        header {
+          padding: 1rem 4%;
+        }
+        .logo {
+          font-size: 1.1rem;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+          display: flex;
+        }
+
+        nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          max-width: 300px;
+          height: 100vh;
+          background: #fff;
+          box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+          transition: 0.3s;
+          padding: 5rem 2rem;
+        }
+        nav.active {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+        nav a {
+          font-size: 1rem;
+        }
+        .btn-contact {
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+        }
+
+        .page-header {
+          padding: 6rem 4% 3rem;
+        }
+        .page-header h1 {
+          font-size: 2rem;
+        }
+
+        .blog-container {
+          padding: 3rem 4%;
+        }
+
+        .blog-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .categories-filter {
+          gap: 0.8rem;
+        }
+
+        .category-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.7rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .page-header {
+          padding: 5rem 4% 2.5rem;
+        }
+        .page-header h1 {
+          font-size: 1.6rem;
+        }
+        .page-header p {
+          font-size: 0.95rem;
+        }
+
+        .blog-card-image {
+          height: 200px;
+        }
+
+        .blog-card-content {
+          padding: 1.5rem;
+        }
+
+        .blog-card-title {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">claro studio</a>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">O nas</a></li>
+          <li><a href="index.html#services">Usługi</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#contact" class="btn-contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <h1 class="reveal">Blog</h1>
+      <p class="reveal">
+        Inspiracje, porady i najnowsze trendy w architekturze i projektowaniu
+        wnętrz
+      </p>
+    </div>
+
+    <div class="blog-container">
+      <!-- Categories Filter -->
+      <div class="categories-filter reveal">
+        <button class="category-btn active" data-category="all">
+          Wszystkie
+        </button>
+        <button class="category-btn" data-category="architektura">
+          Architektura
+        </button>
+        <button class="category-btn" data-category="wnetrza">Wnętrza</button>
+        <button class="category-btn" data-category="porady">Porady</button>
+        <button class="category-btn" data-category="trendy">Trendy</button>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        <!-- Post 1 -->
+        <article class="blog-card reveal" data-category="trendy">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Trendy</span>
+            <div class="blog-card-date">15 Listopada 2024</div>
+            <h3 class="blog-card-title">
+              Trendy w Architekturze Mieszkaniowej 2024
+            </h3>
+            <p class="blog-card-excerpt">
+              Minimalizm, naturalne materiały i otwarte przestrzenie – poznaj
+              najważniejsze kierunki w projektowaniu domów jednorodzinnych w tym
+              roku. Dowiedz się, jakie rozwiązania dominują w nowoczesnej
+              architekturze.
+            </p>
+            <a href="blog-post-1.html" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card reveal" data-category="porady">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Porady</span>
+            <div class="blog-card-date">8 Listopada 2024</div>
+            <h3 class="blog-card-title">Jak Przygotować Się do Budowy Domu?</h3>
+            <p class="blog-card-excerpt">
+              Kompleksowy przewodnik po wszystkich etapach inwestycji – od
+              wyboru działki, przez projekt, pozwolenia, aż po odbiór końcowy.
+              Sprawdź, na co zwrócić uwagę na każdym etapie budowy.
+            </p>
+            <a href="blog-post-2.html" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card reveal" data-category="architektura">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Architektura</span>
+            <div class="blog-card-date">1 Listopada 2024</div>
+            <h3 class="blog-card-title">
+              Zrównoważona Architektura - Przyszłość Budownictwa
+            </h3>
+            <p class="blog-card-excerpt">
+              Jak projektować budynki energooszczędne? Poznaj rozwiązania
+              ekologiczne, które zmniejszą koszty eksploatacji i chronią
+              środowisko. Zrównoważony rozwój w praktyce.
+            </p>
+            <a href="blog-post-3.html" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card reveal" data-category="wnetrza">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Wnętrza</span>
+            <div class="blog-card-date">25 Października 2024</div>
+            <h3 class="blog-card-title">
+              Otwarta Przestrzeń - Jak Zaprojektować Funkcjonalny Salon?
+            </h3>
+            <p class="blog-card-excerpt">
+              Praktyczne wskazówki dotyczące aranżacji otwartej przestrzeni
+              dziennej łączącej salon, jadalnię i kuchną. Poznaj sprawdzone
+              rozwiązania dla nowoczesnych wnętrz.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card reveal" data-category="architektura">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Architektura</span>
+            <div class="blog-card-date">18 Października 2024</div>
+            <h3 class="blog-card-title">
+              Dom Pasywny - Wszystko Co Musisz Wiedzieć
+            </h3>
+            <p class="blog-card-excerpt">
+              Czym jest dom pasywny i jakie korzyści niesie dla właścicieli?
+              Poznaj zasady projektowania budynków o niskim zapotrzebowaniu na
+              energię i dowiedz się, czy to dobry wybór dla Ciebie.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card reveal" data-category="porady">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Porady</span>
+            <div class="blog-card-date">10 Października 2024</div>
+            <h3 class="blog-card-title">
+              10 Błędów Przy Projektowaniu Domu - Jak Ich Uniknąć?
+            </h3>
+            <p class="blog-card-excerpt">
+              Najczęstsze pomyłki popełniane przez inwestorów podczas
+              projektowania domu. Zobacz, jak można ich uniknąć i zaoszczędzić
+              czas oraz pieniądze na etapie budowy.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="blog-card reveal" data-category="wnetrza">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Wnętrza</span>
+            <div class="blog-card-date">3 Października 2024</div>
+            <h3 class="blog-card-title">
+              Kolorystyka Wnętrz - Jak Wybrać Idealną Paletę?
+            </h3>
+            <p class="blog-card-excerpt">
+              Psychologia koloru w projektowaniu wnętrz i praktyczne wskazówki
+              doboru kolorystyki. Dowiedz się, jak stworzyć harmonijną
+              przestrzeń za pomocą odpowiednich barw.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 8 -->
+        <article class="blog-card reveal" data-category="trendy">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Trendy</span>
+            <div class="blog-card-date">26 Września 2024</div>
+            <h3 class="blog-card-title">
+              Biophilic Design - Natura we Wnętrzu
+            </h3>
+            <p class="blog-card-excerpt">
+              Projektowanie biofiliczne zyskuje na popularności. Zobacz, jak
+              wprowadzić elementy natury do wnętrza i stworzyć przestrzeń
+              sprzyjającą zdrowiu i relaksowi.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+
+        <!-- Post 9 -->
+        <article class="blog-card reveal" data-category="architektura">
+          <div class="blog-card-image">[Blog Image]</div>
+          <div class="blog-card-content">
+            <span class="blog-card-category">Architektura</span>
+            <div class="blog-card-date">20 Września 2024</div>
+            <h3 class="blog-card-title">
+              Drewno w Architekturze - Materiał Przyszłości
+            </h3>
+            <p class="blog-card-excerpt">
+              Nowoczesna architektura drewniana i zalety konstrukcji z tego
+              naturalnego surowca. Poznaj przykłady realizacji i możliwości
+              zastosowania drewna w budownictwie.
+            </p>
+            <a href="#" class="blog-card-link">Czytaj więcej</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2024 claro studio. Wszelkie prawa zastrzeżone. |
+      <a href="#" style="color: #777">Polityka Prywatności</a>
+    </footer>
+
+    <script>
+      // ===== HAMBURGER MENU =====
+      const hamburger = document.querySelector(".hamburger");
+      const nav = document.querySelector("nav");
+      const navLinks = document.querySelectorAll("nav a");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+
+      // ===== SCROLL ANIMATIONS =====
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".reveal").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // ===== CATEGORY FILTER =====
+      const categoryBtns = document.querySelectorAll(".category-btn");
+      const blogCards = document.querySelectorAll(".blog-card");
+
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons
+          categoryBtns.forEach((b) => b.classList.remove("active"));
+          // Add active class to clicked button
+          btn.classList.add("active");
+
+          const category = btn.dataset.category;
+
+          // Filter blog cards
+          blogCards.forEach((card) => {
+            if (category === "all" || card.dataset.category === category) {
+              card.style.display = "block";
+              // Trigger animation again
+              card.classList.remove("active");
+              setTimeout(() => card.classList.add("active"), 50);
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

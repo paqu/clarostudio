@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trendy w Architekturze Mieszkaniowej 2024 - claro studio Blog</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Minimalizm, naturalne materiały i otwarte przestrzenie – poznaj najważniejsze kierunki w projektowaniu domów jednorodzinnych w 2024 roku."
+    />
+    <meta
+      name="keywords"
+      content="trendy architektoniczne 2024, minimalizm w architekturze, nowoczesny dom"
+    />
+    <meta name="author" content="claro studio" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Trendy w Architekturze Mieszkaniowej 2024"
+    />
+    <meta
+      property="og:description"
+      content="Minimalizm, naturalne materiały i otwarte przestrzenie – poznaj najważniejsze kierunki w projektowaniu domów."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <style>
+      /* --- RESET I BAZA --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #333;
+        line-height: 1.8;
+        background-color: #fff;
+        scroll-behavior: smooth;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* --- TYPOGRAFIA --- */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.3;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin: 3rem 0 1.5rem;
+        border-left: 4px solid #000;
+        padding-left: 1rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+        margin: 2rem 0 1rem;
+      }
+      p {
+        margin-bottom: 1.5rem;
+        color: #555;
+        font-weight: 300;
+        font-size: 1.05rem;
+      }
+
+      /* --- NAGŁÓWEK (HEADER) --- */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        position: fixed;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        z-index: 1000;
+        border-bottom: 1px solid #eee;
+      }
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #000;
+      }
+      nav ul {
+        display: flex;
+        gap: 2rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      nav a:hover {
+        color: #888;
+      }
+      .btn-contact {
+        border: 1px solid #000;
+        padding: 0.5rem 1.2rem;
+      }
+      .btn-contact:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* Hamburger menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .hamburger span {
+        width: 25px;
+        height: 2px;
+        background: #000;
+        transition: 0.3s;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      /* --- ARTICLE HEADER --- */
+      .article-header {
+        padding: 8rem 5% 3rem;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      }
+      .article-meta {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .article-category {
+        background: #000;
+        color: #fff;
+        padding: 0.4rem 1rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .article-date {
+        font-size: 0.85rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .article-author {
+        font-size: 0.85rem;
+        color: #666;
+      }
+      .article-header h1 {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 2rem;
+      }
+      .article-excerpt {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      /* --- FEATURED IMAGE --- */
+      .featured-image {
+        width: 100%;
+        max-width: 1200px;
+        height: 500px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      /* --- ARTICLE CONTENT --- */
+      .article-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 4rem 5%;
+      }
+
+      .article-content p {
+        margin-bottom: 1.8rem;
+      }
+
+      .article-content ul,
+      .article-content ol {
+        margin: 1.5rem 0 1.5rem 2rem;
+      }
+
+      .article-content li {
+        margin-bottom: 0.8rem;
+        color: #555;
+        list-style: disc;
+      }
+
+      .article-content blockquote {
+        border-left: 4px solid #000;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .article-content img {
+        margin: 2.5rem 0;
+        width: 100%;
+      }
+
+      /* --- ARTICLE FOOTER --- */
+      .article-footer {
+        max-width: 800px;
+        margin: 3rem auto 0;
+        padding: 2rem 5%;
+        border-top: 1px solid #eee;
+      }
+
+      .share-section {
+        text-align: center;
+      }
+
+      .share-section h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .share-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .share-btn {
+        padding: 0.7rem 1.5rem;
+        border: 1px solid #ddd;
+        background: #fff;
+        cursor: pointer;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: 0.3s;
+      }
+
+      .share-btn:hover {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+      }
+
+      /* --- RELATED POSTS --- */
+      .related-posts {
+        background: #fafafa;
+        padding: 4rem 5%;
+      }
+
+      .related-posts h2 {
+        text-align: center;
+        border: none;
+        padding: 0;
+        margin-bottom: 3rem;
+      }
+
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .related-card {
+        background: #fff;
+        border: 1px solid #eee;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .related-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .related-card-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, #ddd 0%, #ccc 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 0.8rem;
+      }
+
+      .related-card-content {
+        padding: 1.5rem;
+      }
+
+      .related-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #000;
+      }
+
+      .related-card-date {
+        font-size: 0.75rem;
+        color: #999;
+        text-transform: uppercase;
+      }
+
+      /* --- BACK TO BLOG --- */
+      .back-to-blog {
+        text-align: center;
+        padding: 3rem 5%;
+      }
+
+      .btn-back {
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        padding: 0.9rem 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+      }
+
+      .btn-back:hover {
+        background: #333;
+      }
+
+      /* --- STOPKA --- */
+      footer {
+        background: #000;
+        color: #555;
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      /* --- RWD --- */
+      @media (max-width: 768px) {
+        header {
+          padding: 1rem 4%;
+        }
+        .logo {
+          font-size: 1.1rem;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          max-width: 300px;
+          height: 100vh;
+          background: #fff;
+          box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+          transition: 0.3s;
+          padding: 5rem 2rem;
+        }
+        nav.active {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 1.5rem;
+          align-items: flex-start;
+        }
+
+        .article-header {
+          padding: 6rem 4% 2rem;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        h2 {
+          font-size: 1.4rem;
+        }
+
+        .article-excerpt {
+          font-size: 1rem;
+        }
+
+        .featured-image {
+          height: 300px;
+        }
+
+        .article-content {
+          padding: 3rem 4%;
+        }
+
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .article-meta {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+
+        .featured-image {
+          height: 250px;
+        }
+
+        .article-content {
+          padding: 2.5rem 4%;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">claro studio</a>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">O nas</a></li>
+          <li><a href="index.html#services">Usługi</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#contact" class="btn-contact">Kontakt</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-category">Trendy</span>
+          <span class="article-date">15 Listopada 2024</span>
+          <span class="article-author">Autor: claro studio</span>
+        </div>
+        <h1>Trendy w Architekturze Mieszkaniowej 2024</h1>
+        <p class="article-excerpt">
+          Minimalizm, naturalne materiały i otwarte przestrzenie – poznaj
+          najważniejsze kierunki w projektowaniu domów jednorodzinnych w tym
+          roku
+        </p>
+      </div>
+
+      <div class="featured-image">[Featured Image]</div>
+
+      <div class="article-content">
+        <p>
+          Architektura mieszkaniowa przechodzi dynamiczne zmiany, a rok 2024
+          przynosi świeże podejście do projektowania domów jednorodzinnych.
+          Coraz więcej inwestorów poszukuje rozwiązań łączących funkcjonalność z
+          estetyką, jednocześnie dbając o zrównoważony rozwój i minimalizację
+          wpływu na środowisko.
+        </p>
+
+        <h2>Minimalizm jako Filozofia Projektowania</h2>
+        <p>
+          Minimalizm w architekturze to nie tylko styl estetyczny, ale przede
+          wszystkim filozofia życia. Współczesne projekty charakteryzują się
+          prostymi bryłami, czystymi liniami i ograniczoną paletą materiałów.
+          Kluczowe jest eliminowanie zbędnych elementów i skupienie się na tym,
+          co naprawdę istotne.
+        </p>
+
+        <p>
+          W praktyce oznacza to rezygnację z ozdobnych detali na rzecz
+          funkcjonalnych rozwiązań. Fasady domów stają się płaszczyznami o
+          geometrycznych formach, często jednolitych kolorystycznie. Białe,
+          szare i beżowe odcienie dominują w projektach, tworząc ponadczasową
+          elegancję.
+        </p>
+
+        <blockquote>
+          "Dobre projektowanie to usuwanie, a nie dodawanie. Minimalizm uczy
+          nas, że prawdziwe piękno tkwi w prostocie i funkcjonalności." - claro
+          studio
+        </blockquote>
+
+        <h2>Naturalne Materiały w Centrum Uwagi</h2>
+        <p>
+          Drewno, kamień, beton i szkło – to materiały, które dominują we
+          współczesnej architekturze mieszkaniowej. Ich naturalne piękno i
+          trwałość sprawiają, że są idealnym wyborem dla osób ceniących jakość i
+          autentyczność.
+        </p>
+
+        <p>
+          Drewno powraca do łask nie tylko jako materiał konstrukcyjny, ale
+          także wykończeniowy. Naturalne deszczułki, panele drewniane czy
+          elewacje z modrzewia tworzą ciepłą atmosferę i pięknie się starzeją,
+          nabierając szlachetnej patyny.
+        </p>
+
+        <h3>Popularne materiały w 2024 roku:</h3>
+        <ul>
+          <li>
+            Drewno termomodyfikowane - odporne na wilgoć i grzyby, idealne na
+            elewacje
+          </li>
+          <li>Beton architektoniczny - surowy i minimalistyczny w wyrazie</li>
+          <li>Wielkoformatowe płyty ceramiczne - imitujące kamień naturalny</li>
+          <li>Szkło o niskiej emisyjności - energooszczędne i estetyczne</li>
+          <li>Naturalny kamień - wapiń, granit, łupek w wykończeniu fasad</li>
+        </ul>
+
+        <h2>Otwarte Przestrzenie Łączące Wnętrze z Ogrodem</h2>
+        <p>
+          Trend na otwarte przestrzenie to odpowiedź na współczesne potrzeby
+          rodzin poszukujących więcej światła, przestrzeni i kontaktu z naturą.
+          Architekci projektują domy z wielkimi przeszkleniami, które rozmazują
+          granicę między wnętrzem a ogrodem.
+        </p>
+
+        <p>
+          Przesuwne ściany szklane, składane harmonijki czy podnoszono-przesuwne
+          systemy drzwi tarasowych pozwalają na pełne otwarcie salonu na taras i
+          ogród. W ciepłe dni tworzy się jedna, spójna przestrzeń do życia i
+          relaksu.
+        </p>
+
+        <h2>Zrównoważone Rozwiązania Energetyczne</h2>
+        <p>
+          Ekologia i oszczędność energii to nie tylko modny trend, ale
+          konieczność. Domy projektowane w 2024 roku często osiągają standard
+          pasywny lub zeroemisyjny, co przekłada się na minimalne koszty
+          eksploatacji.
+        </p>
+
+        <p>
+          Fotowoltaika, pompy ciepła, rekuperacja, zbiorniki na deszczówkę – to
+          tylko niektóre z rozwiązań, które stają się standardem. Inwestorzy
+          coraz częściej rozumieją, że wyższy koszt początkowy szybko się zwraca
+          dzięki niskim rachunkom za energię.
+        </p>
+
+        <h2>Funkcjonalne Rozplanowanie Przestrzeni</h2>
+        <p>
+          Nowoczesne domy projektowane są z myślą o wygodzie użytkowników.
+          Strefy dzienne łączą salon, jadalnię i kuchną w jedną otwartą
+          przestrzeń, podczas gdy sypialnie znajdują się w cichszej, prywatnej
+          części domu.
+        </p>
+
+        <p>
+          Popularne stają się dodatkowe pomieszczenia typu home office,
+          garderoba typu walk-in czy osobna pralnia. To odpowiedź na zmieniający
+          się styl życia, gdzie coraz więcej osób pracuje zdalnie i potrzebuje
+          funkcjonalnie zorganizowanej przestrzeni.
+        </p>
+
+        <h2>Podsumowanie</h2>
+        <p>
+          Rok 2024 to czas, kiedy architektura mieszkaniowa łączy estetykę z
+          funkcjonalnością i odpowiedzialnością ekologiczną. Minimalistyczne
+          formy, naturalne materiały i otwarte przestrzenie tworzą harmonijne
+          domy, w których chce się żyć. Kluczem do sukcesu jest indywidualne
+          podejście do każdego projektu i dialog między architektem a
+          inwestorem.
+        </p>
+      </div>
+
+      <div class="article-footer">
+        <div class="share-section">
+          <h3>Udostępnij artykuł</h3>
+          <div class="share-buttons">
+            <button class="share-btn">Facebook</button>
+            <button class="share-btn">Twitter</button>
+            <button class="share-btn">LinkedIn</button>
+            <button class="share-btn">Email</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <h2>Powiązane Artykuły</h2>
+      <div class="related-grid">
+        <a href="blog-post-2.html" class="related-card">
+          <div class="related-card-image">[Related Image]</div>
+          <div class="related-card-content">
+            <h3 class="related-card-title">
+              Jak Przygotować Się do Budowy Domu?
+            </h3>
+            <p class="related-card-date">8 Listopada 2024</p>
+          </div>
+        </a>
+
+        <a href="blog-post-3.html" class="related-card">
+          <div class="related-card-image">[Related Image]</div>
+          <div class="related-card-content">
+            <h3 class="related-card-title">
+              Zrównoważona Architektura - Przyszłość Budownictwa
+            </h3>
+            <p class="related-card-date">1 Listopada 2024</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="back-to-blog">
+      <a href="blog.html" class="btn-back">← Powrót do Bloga</a>
+    </div>
+
+    <footer>
+      &copy; 2024 claro studio. Wszelkie prawa zastrzeżone. |
+      <a href="#" style="color: #777">Polityka Prywatności</a>
+    </footer>
+
+    <script>
+      // ===== HAMBURGER MENU =====
+      const hamburger = document.querySelector(".hamburger");
+      const nav = document.querySelector("nav");
+      const navLinks = document.querySelectorAll("nav a");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+
+      // ===== SHARE BUTTONS =====
+      const shareButtons = document.querySelectorAll(".share-btn");
+      shareButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const platform = btn.textContent.toLowerCase();
+          const url = window.location.href;
+          const title = document.querySelector("h1").textContent;
+
+          let shareUrl;
+          switch (platform) {
+            case "facebook":
+              shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+              break;
+            case "twitter":
+              shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+              break;
+            case "linkedin":
+              shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+              break;
+            case "email":
+              shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+              break;
+          }
+
+          if (shareUrl) {
+            if (platform === "email") {
+              window.location.href = shareUrl;
+            } else {
+              window.open(
+                shareUrl,
+                "_blank",
+                "width=600,height=400,menubar=no,toolbar=no",
+              );
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
